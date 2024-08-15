@@ -4,6 +4,7 @@ Input: n = 10
 Output: 4
 Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 Method Name:Sieve of Eratosthenes
+Time Complexity: O(Nloglogn)
 code:
 import java.util.*;
 class Solution {
@@ -30,4 +31,4 @@ class Solution {
     }
 
 }
-Time Complexity: O(Nloglogn)
+
