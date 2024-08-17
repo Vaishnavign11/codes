@@ -1,4 +1,11 @@
-Q:Nick is interested in prime numbers. Once he read about Goldbach problem. It states that every even integer greater than 2 can be expressed as the sum of two primes. That got Nick's attention and he decided to invent a problem of his own and call it Noldbach problem. Since Nick is interested only in prime numbers, Noldbach problem states that at least k prime numbers from 2 to n inclusively can be expressed as the sum of three integer numbers: two neighboring prime numbers and 1. For example, 19 = 7 + 11 + 1, or 13 = 5 + 7 + 1.
+Q:Nick is interested in prime numbers. Once he read about Goldbach problem.
+It states that every even integer greater than 2 can be expressed as the sum of two primes. 
+That got Nick's attention and he decided to invent a problem of his own and call it 
+Noldbach problem. 
+Since Nick is interested only in prime numbers, Noldbach problem states that at least
+k prime numbers from 2 to n inclusively
+can be expressed as the sum of three integer numbers: two neighboring prime numbers and 1. 
+For example, 19 = 7 + 11 + 1, or 13 = 5 + 7 + 1.
 Two prime numbers are called neighboring if there are no other prime numbers between them.
 You are to help Nick, and find out if he is right or wrong.
 Input
@@ -10,6 +17,15 @@ Input
 27 2
 Output
 YES
+
+
+
+Approch:
+step1:build a seive array (l) till 1000 bu=y filling prime numbers as zero and non prime numbers as 1;
+step2:take array (res) and fill all the prime numbers in it
+step3:Now check the consecutive values are res[i]+res[i+1]+1 is prime or not if yes count increase
+step4:if count is >= to k then print yes else no;
+
 
 code:
 import java.util.Arrays;
