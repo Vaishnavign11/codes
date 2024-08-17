@@ -1,0 +1,83 @@
+Q:Nick is interested in prime numbers. Once he read about Goldbach problem. It states that every even integer greater than 2 can be expressed as the sum of two primes. That got Nick's attention and he decided to invent a problem of his own and call it Noldbach problem. Since Nick is interested only in prime numbers, Noldbach problem states that at least k prime numbers from 2 to n inclusively can be expressed as the sum of three integer numbers: two neighboring prime numbers and 1. For example, 19 = 7 + 11 + 1, or 13 = 5 + 7 + 1.
+Two prime numbers are called neighboring if there are no other prime numbers between them.
+You are to help Nick, and find out if he is right or wrong.
+Input
+The first line of the input contains two integers n (2 ≤ n ≤ 1000) and k (0 ≤ k ≤ 1000).
+Output
+Output YES if at least k prime numbers from 2 to n inclusively can be expressed as it was described above. Otherwise output NO.
+Examples
+Input
+27 2
+Output
+YES
+
+code:
+import java.util.Arrays;
+import java.util.Scanner;
+
+class GFG {
+    static int[] l = new int[1001];
+    static int f = 0;  // flag to run the sieve method only once
+
+    public static void sieve() {
+        if (f == 0) {
+            Arrays.fill(l, 0);
+            for (int i = 2; i < 1001; i++) {
+                if (l[i] == 0) {
+                    for (int j = 2 * i; j < 1001; j += i) {
+                        l[j] = 1;
+                    }
+                }
+            }
+            f = 1;
+        }
+    }
+
+    public static boolean isp(int y) {
+        if (y <= 1) return false;
+        for (int i = 2; i * i <= y; i++) {
+            if (y % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        sieve();
+        int n = s.nextInt();
+        int c = 0;
+        int k = s.nextInt();
+
+        int[] res = new int[n + 1];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (l[i] == 0) {
+                res[index++] = i;
+            }
+        }
+
+        for (int x = 0; x < index - 1; x++) {
+            
+            int sum = res[x] + res[x + 1] + 1;
+           // System.out.print(sum+" ");
+        if(sum<=n){
+            if (isp(sum)) {
+                c++;
+            }
+        }
+        else
+        break;
+        }
+        //System.out.println();
+       // System.out.println(c);
+        if(c>=k)
+        System.out.println("YES");
+        else 
+        System.out.println("NO");
+    }
+}
+
+
+
